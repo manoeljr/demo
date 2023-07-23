@@ -1,9 +1,19 @@
 package com.devsuperior.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_product")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "departament_id")
     private Departament departament;
 
     public Product() {
